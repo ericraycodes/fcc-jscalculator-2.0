@@ -25,7 +25,7 @@ class Calculator extends React.Component {
     // console 
     window.console.count('<CALCULATOR/>');
     return (
-      <main>
+      <main className='calculator'>
         <Display/>
         <ButtonPad/>
       </main>
