@@ -3,14 +3,15 @@
 // imports
 import React from "react";
 import Display from './components/Display';
-import ButtonPad from './components/ButtonPad';
+import Buttons from './components/Buttons';
 
 
 /** JAVASCRIPT CALCULATOR APP
     * Uses the React.Component as parent class to create components.
     * This is the parent component - stateful component, of the app.
     * 
-    * @state 
+    * @state Object : contains Array that stores the composition of the 
+    *   validated math expression.
     * 
     * @return JSX : a single parent element that contains child components.
     */
@@ -27,7 +28,7 @@ class Calculator extends React.Component {
     return (
       <main className='calculator'>
         <Display/>
-        <ButtonPad/>
+        <Buttons/>
       </main>
     );
   }

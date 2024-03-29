@@ -1,0 +1,24 @@
+
+
+.display-container {
+  /* temporary */
+  border: 1px dashed green;
+
+  /* dimension */
+  width: 100%;
+  height: 70px;
+}
+
+
+/* expression display */
+#expression {
+  /* typo */
+  font-size: 1.2rem;
+  text-align: right;
+}
+/* #display element, input / result */
+#display {
+  /* typo */
+  font-size: 1.8rem;
+  text-align: right;
+}

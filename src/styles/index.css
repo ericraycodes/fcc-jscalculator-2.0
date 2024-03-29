@@ -1,0 +1,32 @@
+
+
+/* imports */
+@import 'calculator.css';
+@import 'display.css';
+@import 'buttons.css';
+
+
+/* initial rules */
+* {
+  /* typo */
+  font-family: monospace, Courier, Courier New, Arial, "Times New Roman", sans-serif, serif;
+
+  /* box */
+  box-sizing: border-box;
+
+  /* box */
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  /* dimensions */
+  width: 100vw;
+  height: 100vh;
+
+  /* layout */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

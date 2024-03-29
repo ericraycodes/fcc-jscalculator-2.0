@@ -1,0 +1,19 @@
+
+
+/* variables */
+:root {
+  --btn-width : 80px;
+}
+
+.calculator {
+  /* temporary */
+  border: 1px solid orange;
+
+  /* dimension */
+  min-width: 240px;
+  min-height: 320px;
+  width: calc(var(--btn-width) * 4);
+
+  /* box */
+  padding: 2px;
+}

@@ -37,7 +37,7 @@ const buttonList = [
  * 
  * @return JSX : contain all the calculator-buttons.
  */
-class ButtonPad extends React.Component {
+class Buttons extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -48,10 +48,11 @@ class ButtonPad extends React.Component {
 
     // iterate button rendering
     const buttons = buttonList.map(btn => {
-      return (<li key={btn.id}><button id={btn.id}>{btn.text}</button></li>);
+      return (<li key={btn.id} className={'btn '+btn.id}><button id={btn.id}>{btn.text}</button></li>);
     });
+    
     return (
-      <ul>
+      <ul className='buttons'>
         { buttons }
       </ul>
     );
@@ -60,4 +61,4 @@ class ButtonPad extends React.Component {
 
 
 // export
-export default ButtonPad;
+export default Buttons;
