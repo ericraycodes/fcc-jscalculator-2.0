@@ -9,16 +9,23 @@
  * 
  * @return JSX : an element that contains the Calculator data.
  */
-const Display = () => {
+const Display = (props) => {
   // console
   window.console.count('<Display/>');
+
+  // calculator-display content
+  window.console.log('\tdisplay:', props.expression);
+  const array = [...props.expression];
+  const expression = array.join(' ');
+  const display = array.length > 0 ? array[array.length-1] : 0;
+
   return (
     <figure className='display-container'>
       <div id='expression'>
-        Math Expression
+        { expression }
       </div>
       <div id='display'>
-        Input / Output
+        { display }
       </div>
     </figure>
   );

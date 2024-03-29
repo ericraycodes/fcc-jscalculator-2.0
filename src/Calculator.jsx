@@ -20,6 +20,18 @@ class Calculator extends React.Component {
   // special method, initializes the objects within this class component
   constructor (props) {
     super(props);
+    this.state = {
+      // store the calculator expression
+      "expression" : [],
+    };
+    this.setExpression = this.setExpression.bind(this);
+  }
+
+  // callback to receive data from buttons' event
+  setExpression = (data) => {
+    // access event-target text
+    const inputText = data.target.innerText;
+    window.console.log('\tsetExpression:', inputText, typeof inputText);
   }
 
   render () {
@@ -27,8 +39,8 @@ class Calculator extends React.Component {
     window.console.count('<CALCULATOR/>');
     return (
       <main className='calculator'>
-        <Display/>
-        <Buttons/>
+        <Display expression={this.state.expression}/>
+        <Buttons setExpression={this.setExpression}/>
       </main>
     );
   }

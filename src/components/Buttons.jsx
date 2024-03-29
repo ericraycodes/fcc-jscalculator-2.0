@@ -38,8 +38,32 @@ const buttonList = [
  * @return JSX : contain all the calculator-buttons.
  */
 class Buttons extends React.Component {
+
   constructor(props) {
     super(props);
+    this.onMouseUp = this.onMouseUp.bind(this);
+  }
+
+  // LIFECYCLES
+  // attach a delegated event listener, targets buttons
+  componentDidMount() {
+    // console
+    window.console.log('\tonMouseUp event listener');
+    const buttonsDOM = document.querySelector('.buttons');
+    buttonsDOM.addEventListener('mouseup', this.onMouseUp);
+  }
+  // remove event listener
+  componentWillUnmount() {
+    const buttonsDOM = document.querySelector('.buttons');
+    buttonsDOM.removeEventListener('mouseup', this.onMouseUp);
+  }
+
+  // CALLBACK
+  onMouseUp = (event) => {
+    // console.log
+    window.console.log('USER:', event.target);
+    // pass the event to the parent component
+    this.props.setExpression(event);
   }
 
   render() {
@@ -48,7 +72,14 @@ class Buttons extends React.Component {
 
     // iterate button rendering
     const buttons = buttonList.map(btn => {
-      return (<li key={btn.id} className={'btn '+btn.id}><button id={btn.id}>{btn.text}</button></li>);
+      return (
+        <li
+          key={btn.id}
+          className={'btn ' + btn.id}
+        >
+          <button id={btn.id}>{ btn.text }</button>
+        </li>
+      );
     });
     
     return (
