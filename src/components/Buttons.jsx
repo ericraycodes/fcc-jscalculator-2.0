@@ -44,11 +44,14 @@ class Buttons extends React.Component {
     this.onMouseUp = this.onMouseUp.bind(this);
   }
 
-  // LIFECYCLES
+  /* LIFECYCLES
+    * Methods provided by React to manage / manipulate the component's
+    * activity throughout from mounting to unmountind and in-betweens.
+    */
   // attach a delegated event listener, targets buttons
   componentDidMount() {
     // console
-    window.console.log('\tonMouseUp event listener');
+    // window.console.log('\tonMouseUp event listener');
     const buttonsDOM = document.querySelector('.buttons');
     buttonsDOM.addEventListener('mouseup', this.onMouseUp);
   }
@@ -68,7 +71,7 @@ class Buttons extends React.Component {
 
   render() {
     // console
-    window.console.count('<ButtonPad/>');
+    // window.console.count('<ButtonPad/>');
 
     // iterate button rendering
     const buttons = buttonList.map(btn => {

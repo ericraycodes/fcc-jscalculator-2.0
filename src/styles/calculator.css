@@ -12,7 +12,7 @@
   /* dimension */
   min-width: 240px;
   min-height: 320px;
-  width: calc(var(--btn-width) * 4);
+  width: calc(var(--btn-width) * 5);
 
   /* box */
   padding: 2px;

@@ -8,15 +8,14 @@
 .buttons {
   /* layout */
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(5, var(--btn-height));
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, var(--btn-height));
   gap: 2px;
   grid-template-areas:
-    "n7 n8 n9 div"
-    "n4 n5 n6 mul"
-    "n1 n2 n3 add"
-    "n0 n0 dp sub"
-    "ac ac eq eq";
+    "n7 n8 n9 div ac"
+    "n4 n5 n6 mul eq"
+    "n1 n2 n3 add eq"
+    "n0 n0 dp sub eq";
 }
 /* grid areas - <li/> elements */
 .zero   { grid-area: n0; }

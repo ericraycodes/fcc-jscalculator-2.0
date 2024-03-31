@@ -2,19 +2,33 @@
 
 .display-container {
   /* temporary */
-  border: 1px dashed green;
+  /* border: 1px dashed green; */
 
   /* dimension */
   width: 100%;
   height: 70px;
+
+  /* layout */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* box */
+  padding: 0 4px;
 }
 
 
 /* expression display */
 #expression {
   /* typo */
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: right;
+
+  /* dimension */
+  min-height: 23px;
+
+  /* overflow */
+
 }
 /* #display element, input / result */
 #display {

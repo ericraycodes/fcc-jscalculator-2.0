@@ -4,6 +4,7 @@
 import React from "react";
 import Display from './components/Display';
 import Buttons from './components/Buttons';
+import runCalculator from './assets/calculator.jsx';
 
 
 /** JAVASCRIPT CALCULATOR APP
@@ -17,7 +18,12 @@ import Buttons from './components/Buttons';
     */
 class Calculator extends React.Component {
 
-  // special method, initializes the objects within this class component
+  /* CONSTRUCTOR
+    * A Special method, it initializes class component properly.
+    * It is standard practice to call constructor() and super() - passing
+    * 'props' as parameter to both.
+    * It will initialize all component's local state and methods.
+    */
   constructor (props) {
     super(props);
     this.state = {
@@ -32,11 +38,22 @@ class Calculator extends React.Component {
     // access event-target text
     const inputText = data.target.innerText;
     window.console.log('\tsetExpression:', inputText, typeof inputText);
+
+    // process user-activity
+    const expression = [...this.state.expression];
+    const updatedExpression = runCalculator(expression, inputText);
+
+    // update state
+    this.setState({ "expression" : updatedExpression });
   }
 
+  /* RENDER METHOD OF REACT'S COMPONENT CLASS
+    * This returns HTML code from a JSX syntax (or null - when no JSX is coded).
+    */
   render () {
     // console 
-    window.console.count('<CALCULATOR/>');
+    // window.console.count('<CALCULATOR/>');
+
     return (
       <main className='calculator'>
         <Display expression={this.state.expression}/>
