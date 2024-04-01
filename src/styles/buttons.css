@@ -51,4 +51,18 @@ button {
 
   /* box */
   border: none;
+
+  /* color */
+  color: rgba(0, 0, 0, 0.55);
+  background-color:rgba(221, 221, 221, 0.5);
+
+  /* typo */
+  font-weight: bold;
+}
+button:hover {
+  background-color: #DDDDDD;
+}
+button:active {
+  background-color: rgba(221, 221, 221, 0.5);
+  color: orange;
 }

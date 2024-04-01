@@ -6,8 +6,6 @@
 }
 
 .calculator {
-  /* temporary */
-  border: 1px solid orange;
 
   /* dimension */
   min-width: 240px;
@@ -15,5 +13,7 @@
   width: calc(var(--btn-width) * 5);
 
   /* box */
-  padding: 2px;
+  border: 2px solid #FF9B6A;
+  border-radius: 4px;
+  padding: 5px;
 }

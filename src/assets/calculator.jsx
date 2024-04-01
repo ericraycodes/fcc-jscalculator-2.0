@@ -3,7 +3,7 @@
 
 
 // check if data is a numeric
-const isTypeNumber = (data) => /^\-?[0-9]+\.?[0-9]*$/.test(data) || typeof data === 'number' || data === '.';
+const isTypeNumber = (data) => /^\-?[0-9]+\.?[0-9]*$/.test(data) || data==='.' || (typeof data === 'number');
 // check if data is operator
 const isTypeOperator = (data) => /^[x/+-]$/.test(data);
 
@@ -297,9 +297,9 @@ export default function runCalculator(array, string) {
 	}
 	// implement computation
 	else if (isForCalculation) {
-		// anti-equals-spam condition
+		// there must be an expression, and anti-equals-spam condition
 		const isExpressionHasEquals = expression.some(_ => _ === '=');
-		if (!isExpressionHasEquals) {
+		if (expression.length>0 && !isExpressionHasEquals) {
 
 			// step 1: append '=' to expression
 			expression.push(input);

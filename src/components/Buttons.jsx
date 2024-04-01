@@ -65,8 +65,8 @@ class Buttons extends React.Component {
   onMouseUp = (event) => {
     // console.log
     window.console.log('USER:', event.target);
-    // pass the event to the parent component
-    this.props.setExpression(event);
+    // pass the event to the parent component when buttons were targeted
+    if (event.target.nodeName === 'BUTTON') this.props.setExpression(event);
   }
 
   render() {

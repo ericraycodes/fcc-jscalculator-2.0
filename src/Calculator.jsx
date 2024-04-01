@@ -19,10 +19,13 @@ import runCalculator from './assets/calculator.jsx';
 class Calculator extends React.Component {
 
   /* CONSTRUCTOR
-    * A Special method, it initializes class component properly.
-    * It is standard practice to call constructor() and super() - passing
+    *
+    *   A Special method, it initializes class component properly.
+    * 
+    *   It is standard practice to call constructor() and super() - passing
     * 'props' as parameter to both.
-    * It will initialize all component's local state and methods.
+    * 
+    *   It will initialize all component's local state and methods.
     */
   constructor (props) {
     super(props);
