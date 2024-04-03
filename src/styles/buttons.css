@@ -53,11 +53,11 @@ button {
   border: none;
 
   /* color */
-  color: rgba(0, 0, 0, 0.55);
+  color: rgba(0, 0, 0, 0.7);
   background-color:rgba(221, 221, 221, 0.5);
 
   /* typo */
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 button:hover {
   background-color: #DDDDDD;

@@ -41,6 +41,9 @@ class Buttons extends React.Component {
 
   constructor(props) {
     super(props);
+    // <ul/> node reference
+    this.ulRef = React.createRef();
+    // event callback
     this.onMouseUp = this.onMouseUp.bind(this);
   }
 
@@ -52,13 +55,11 @@ class Buttons extends React.Component {
   componentDidMount() {
     // console
     // window.console.log('\tonMouseUp event listener');
-    const buttonsDOM = document.querySelector('.buttons');
-    buttonsDOM.addEventListener('mouseup', this.onMouseUp);
+    this.ulRef.current.addEventListener('click', this.onMouseUp);
   }
   // remove event listener
   componentWillUnmount() {
-    const buttonsDOM = document.querySelector('.buttons');
-    buttonsDOM.removeEventListener('mouseup', this.onMouseUp);
+    this.ulRef.current.removeEventListener('click', this.onMouseUp);
   }
 
   // CALLBACK
@@ -75,6 +76,9 @@ class Buttons extends React.Component {
 
     // iterate button rendering
     const buttons = buttonList.map(btn => {
+      // console
+      // window.console.count('calculator pad iterative render');
+      // return jsx
       return (
         <li
           key={btn.id}
@@ -86,7 +90,7 @@ class Buttons extends React.Component {
     });
     
     return (
-      <ul className='buttons'>
+      <ul className='buttons' ref={this.ulRef}>
         { buttons }
       </ul>
     );

@@ -10,14 +10,14 @@ const isTypeOperator = (data) => /^[x/+-]$/.test(data);
 
 /** Inclusion / non-inclusion of previous result.
  	* @parameter Array : math expression
- 	* 
+ 	*
  	* Conditions
  	* 1. Access result from previous calculation.
  	* 2. Anticipate these result-values : numeric, Infinity, and NaN.
  	* 3. Inclusion, when follow-up input after calculation is an OPERATOR;
  	* 	 otherwise, non-inclusion.
  	* 4. Either way, the expression array is restarted.
- 	* 
+ 	*
  	* @return Array : updated math expression
  	*/
 function includeResult(array) {
@@ -32,7 +32,7 @@ function includeResult(array) {
 
 		// check if follow-up input is OPERATOR
 		const isOperator = /[x/+-]/.test(arr[li]);
-	
+
 		// include result? the deciding is upon the value of includeIndex
 		const includeIndex = isOperator ? li - 1 : li;
 
@@ -49,11 +49,11 @@ function includeResult(array) {
 
 /** Collate input sequence for numeric terms and operators.
  	* @parameter Array : math expression
- 	* 
+ 	*
  	* 1. Compose numeric terms.
  	* 2. Filter operator inputs.
  	* 3. Integrate negative sign to numbers.
- 	* 
+ 	*
  	* @return Array : updated math expression
  	*/
 function collateInputs(array) {
@@ -115,7 +115,7 @@ function collateInputs(array) {
 		if (arr.length>2) {
 			// check
 			const isRule2D = isTypeOperator(arr[li-2]) && arr[li-1]==='-' && isTypeOperator(arr[li]);
-			if (isRule2D) arr.splice(li-2, 2); 
+			if (isRule2D) arr.splice(li-2, 2);
 		}
 		// implement 2B only, 2A and 2C will naturally implement
 		if (isRule2B) {
@@ -133,11 +133,11 @@ function collateInputs(array) {
 	if (arr.length > 1) {
 		// access latest index
 		const li = arr.length - 1;
-		
+
 		// conditions at the middle and start of expression
 		const isNegativeCondition = arr.length > 2  ? (isTypeOperator(arr[li-2]) && arr[li-1]==='-' ? true : false)
 			: arr.length > 1 ? (arr[li-1]==='-' ? true : false ) : false;
-					
+
 		// implement
 		if (isNegativeCondition) {
 			arr[li-1] += arr[li];
@@ -146,7 +146,7 @@ function collateInputs(array) {
 
 		// console
 		window.console.log('\tonfloat:', arr);
-	} 
+	}
 
 	// console
 	window.console.log('\tcollate:', arr);
@@ -156,17 +156,17 @@ function collateInputs(array) {
 
 /** Validate expression sequence
 	* @parameter Array : math expression
-	* 
+	*
 	* 1. Expression starts and ends with a numeric term (operand).
 	* 2. Completed numeric terms (when followed up by an operator input)
 	* 	 are parseFloated (validated).
-	* 
+	*
 	* @return Array : updated math expression.
 	*/
 function validateExpression(array) {
-	// expression 
+	// expression
 	const arr = [...array];
-	
+
 
 	// validate at the start of expression
 	if (arr.length === 2) {
@@ -205,16 +205,17 @@ function validateExpression(array) {
 
 /** Evaluate the math expression
 	* @parameter Array : math expression
-	* 
-	* 1. Use the MDAS rule.
+	*
+	* 1. Did not use the MDAS rule to pass tests.
 	* 2. Manage precision of result's decimal figures to at least four digits.
-	* 
+	*
 	* @return Array : the math expression with result
 	*/
 function evaluateExpression(array) {
 	// math expression
 	const arr = array.filter(_ => _ !== '=');
 
+  /*
 	// MDAS priority
 	['x', '/', '+', '-'].forEach(prio => {
 
@@ -227,8 +228,8 @@ function evaluateExpression(array) {
 			// run operation when prio match
 			if (prio === operator) {
 
-				// prio operation	
-				let result = null;				
+				// prio operation
+				let result = null;
 				switch (operator) {
 					case 'x' : result = arr[i-1] * arr[i+1]; break;
 					case '/' : result = arr[i-1] / arr[i+1]; break;
@@ -243,7 +244,34 @@ function evaluateExpression(array) {
 				i = 0;
 			}
 		}
-	});
+	}); */
+
+  // evaluate expression
+  let i = null;
+  for (i=0; i<arr.length; i++) {
+
+    // search for operators
+    if (/[x/+-]/.test(arr[i])) {
+      // console
+      window.console.log('\tevaluation:', 'index:', i, 'operator:', arr[i]);
+
+      // operate from left to write
+      let result = null;
+      switch (arr[i]) {
+        case '+' : arr[i-1] += arr[i+1]; break;
+        case '-' : arr[i-1] -= arr[i+1]; break;
+        case 'x' : arr[i-1] *= arr[i+1]; break;
+        case '/' : arr[i-1] /= arr[i+1]; break;
+      }
+
+      // update expression
+      arr.splice(i, 2);
+      // console
+      window.console.log('\tresult:', arr[i-1], arr);
+      // execute operations from the start again
+      i = 0;
+    }
+  }
 
 	// manage decimal precisio
 	arr[0] = Math.round(arr[0] * 10000) / 10000;
@@ -259,12 +287,12 @@ function evaluateExpression(array) {
 
 /** MAIN FUNCTION
  	* @parameter Array, String : the component state, button character
- 	* 
+ 	*
  	* Perform task based on input:
  	* 1. Form a math expression.
  	* 2. Compute the result of the expression when evaluated.
  	* 3. Reset the calculator-input-data.
- 	* 
+ 	*
  	* @return Array : updated expression based on user input.
  	*/
 export default function runCalculator(array, string) {

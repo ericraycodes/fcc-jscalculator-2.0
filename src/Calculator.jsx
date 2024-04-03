@@ -41,6 +41,7 @@ class Calculator extends React.Component {
     // access event-target text
     const inputText = data.target.innerText;
     window.console.log('\tsetExpression:', inputText, typeof inputText);
+    window.console.log('\tevent:', data);
 
     // process user-activity
     const expression = [...this.state.expression];

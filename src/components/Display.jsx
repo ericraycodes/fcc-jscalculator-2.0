@@ -14,7 +14,7 @@ const Display = (props) => {
   // window.console.count('<Display/>');
 
   // calculator-display content
-  window.console.log('\tdisplay:', props);
+  // window.console.log('\tdisplay:', props);
   const array = [...props.expression];
   const expression = array.join(' ');
   const display = array.length > 0 ? array[array.length-1] : 0;
