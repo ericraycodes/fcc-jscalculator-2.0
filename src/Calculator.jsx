@@ -4,16 +4,17 @@
 import React from "react";
 import Display from './components/Display';
 import Buttons from './components/Buttons';
+import Footer from './components/Footer';
 import runCalculator from './assets/calculator.jsx';
 
 
 /** JAVASCRIPT CALCULATOR APP
     * Uses the React.Component as parent class to create components.
     * This is the parent component - stateful component, of the app.
-    * 
-    * @state Object : contains Array that stores the composition of the 
+    *
+    * @state Object : contains Array that stores the composition of the
     *   validated math expression.
-    * 
+    *
     * @return JSX : a single parent element that contains child components.
     */
 class Calculator extends React.Component {
@@ -21,10 +22,10 @@ class Calculator extends React.Component {
   /* CONSTRUCTOR
     *
     *   A Special method, it initializes class component properly.
-    * 
+    *
     *   It is standard practice to call constructor() and super() - passing
     * 'props' as parameter to both.
-    * 
+    *
     *   It will initialize all component's local state and methods.
     */
   constructor (props) {
@@ -55,14 +56,17 @@ class Calculator extends React.Component {
     * This returns HTML code from a JSX syntax (or null - when no JSX is coded).
     */
   render () {
-    // console 
+    // console
     // window.console.count('<CALCULATOR/>');
 
     return (
+      <>
       <main className='calculator'>
         <Display expression={this.state.expression}/>
         <Buttons setExpression={this.setExpression}/>
       </main>
+      <Footer />
+      </>
     );
   }
 }
