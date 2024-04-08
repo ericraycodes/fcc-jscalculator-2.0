@@ -251,7 +251,7 @@ function evaluateExpression(array) {
   for (i=0; i<arr.length; i++) {
 
     // search for operators
-    if (/[x/+-]/.test(arr[i])) {
+    if (/^[x/+-]$/.test(arr[i])) {
       // console
       window.console.log('\tevaluation:', 'index:', i, 'operator:', arr[i]);
 
